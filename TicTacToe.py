@@ -20,18 +20,20 @@ def display_tictaktoe(lst):
 
 def check_win(board,marker):
     mark_index=[]
-    win=False;
     win_combination={'c1':[0,1,2],'c2':[3,4,5],'c3':[6,7,8],'c4':[0,3,6],
                      'c5':[1,4,7],'c6':[2,5,8],'c7':[0,4,8],'c8':[2,4,6]}
     for num in range(0,len(board)):
         if board[num]== marker:
             mark_index.append(num)
-
-    if mark_index in win_combination.values():
-        win=True
-        return win
+    #print(mark_index)
+    #print(mark_index in win_combination.values())
+    for a_win_comb in win_combination.values():
+        #print("Printing a_win_comb {}".format(a_win_comb))
+        #print(a_win_comb in mark_index)
+        if all(elem in mark_index  for elem in a_win_comb) and len(mark_index) >=3:
+            return True
     else:
-        return win
+        return False
 
 def player_choice(board):
     check_input=True
@@ -127,7 +129,8 @@ def start_game():
             choice=player_choice(board)
             board[choice]=players[first_player][1]
             display_tictaktoe(board)
-            #print(board)
+            print(board)
+            print("The marker of {} is {}".format(players[first_player][0],players[first_player][1]))
             end_game=check_win(board,players[first_player][1])
             if end_game:
                 print("{}!!! has won the game.".format(players[first_player][0]))
@@ -142,6 +145,7 @@ def start_game():
             board[choice]=players[second_player][1]
             display_tictaktoe(board)
             print(board)
+            print("The marker of {} is {}".format(players[second_player][0],players[second_player][1]))
             end_game=check_win(board,players[second_player][1])
             if end_game:
                 print("{}!!! has won the game.".format(players[second_player][0]))
@@ -156,4 +160,3 @@ def start_game():
             break
 
 start_game()
-  
