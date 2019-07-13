@@ -87,17 +87,8 @@ def replay():
     else:
         return False
 def start_game():
-    #clear_output()
-    print("Welcome to the Tic Tac Toe")
-    board=[' ',' ',' ',' ',' ',' ',' ',' ',' ']
-   # print(len(board))
-    end_game=False;
-    display_tictaktoe(board)
-    print()
-    print()
-    marker_list=['X','O']
-    players={'1':['Player 1',''], '2':['Player 2','']}
-    second_player=''
+
+
     again=True
 
 
@@ -105,6 +96,16 @@ def start_game():
     #print("Player {} going 1st ".format(first_player))
 
     while again:
+        print("Welcome to the Tic Tac Toe")
+        print()
+        print()
+        board=[' ',' ',' ',' ',' ',' ',' ',' ',' ']
+        display_tictaktoe(board)
+        marker_list=['X','O']
+        players={'1':['Player 1',''], '2':['Player 2','']}
+        end_game=False;
+        second_player=''
+
 
         first_player=str(choose_first())
         if first_player == '1':
